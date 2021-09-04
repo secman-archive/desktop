@@ -4,6 +4,40 @@
   "author": "Secman, Inc.",
   "description": "Secman Desktop",
   "license": "MIT",
+  "build": {
+    "productName": "Secman Desktop",
+    "appId": "dev.secman.desktop",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "dist/electron/**/*"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "mac": {
+      "icon": "res/icon.icns"
+    },
+    "win": {
+      "icon": "res/icon.ico"
+    },
+    "linux": {
+      "icon": "res/icon.png"
+    }
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "crypto-js": "^4.0.0",
