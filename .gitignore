@@ -11,4 +11,4 @@ thumbs.db
 installers
 .idea/
 
-src/renderer/api/secrets.ts
+core/renderer/apis/secrets.ts
