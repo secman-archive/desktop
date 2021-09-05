@@ -58,6 +58,23 @@ const router = new Router({
       ],
     },
     {
+      path: "/emails",
+      name: "Emails",
+      component: require("@/contents/Emails/index").default,
+      children: [
+        {
+          path: "create",
+          name: "EmailCreate",
+          component: require("@/contents/Emails/Create").default,
+        },
+        {
+          path: ":id",
+          name: "EmailDetail",
+          component: require("@/contents/Emails/Detail").default,
+        },
+      ],
+    },
+    {
       path: "/servers",
       name: "Servers",
       component: require("@/contents/Servers/index").default,
