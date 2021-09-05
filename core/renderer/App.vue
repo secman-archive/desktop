@@ -40,11 +40,8 @@
 </template>
 
 <script>
-import fs from "fs";
-import Papa from "papaparse";
 import electron, { remote } from "electron";
 import { mapActions, mapMutations, mapState } from "vuex";
-import CryptoTools from "@/tools/crypto";
 
 export default {
   computed: mapState(["access_token", "searchQuery"]),
@@ -79,67 +76,67 @@ export default {
       electron.shell.openExternal("https://desktop.secman.dev");
     },
 
-    async onExport() {
-      const filePath = remote.dialog.showSaveDialogSync(null);
+    // async onExport() {
+    //   const filePath = remote.dialog.showSaveDialogSync(null);
 
-      if (!filePath) {
-        return;
-      }
+    //   if (!filePath) {
+    //     return;
+    //   }
 
-      try {
-        const data = await this.Export();
+    //   try {
+    //     const data = await this.Export();
 
-        const itemList = JSON.parse(CryptoTools.aesDecrypt(data));
-        itemList.forEach((item) => CryptoTools.decryptFields(item));
+    //     const itemList = JSON.parse(CryptoTools.aesDecrypt(data));
+    //     itemList.forEach((item) => CryptoTools.decryptFields(item));
 
-        const csvContent = Papa.unparse(itemList);
-        fs.writeFileSync(filePath, csvContent);
-      } catch (error) {
-        this.$notifyError(this.$t("Something went wrong."));
-        console.log(error);
-      }
-    },
+    //     const csvContent = Papa.unparse(itemList);
+    //     fs.writeFileSync(filePath, csvContent);
+    //   } catch (error) {
+    //     this.$notifyError(this.$t("Something went wrong."));
+    //     console.log(error);
+    //   }
+    // },
 
-    onImport() {
-      remote.dialog
-        .showOpenDialog({ properties: ["openFile"] })
-        .then(async ({ filePaths }) => {
-          if (filePaths.length === 0) {
-            return;
-          }
-          try {
-            const fileContent = fs.readFileSync(filePaths[0]).toString();
+    // onImport() {
+    //   remote.dialog
+    //     .showOpenDialog({ properties: ["openFile"] })
+    //     .then(async ({ filePaths }) => {
+    //       if (filePaths.length === 0) {
+    //         return;
+    //       }
+    //       try {
+    //         const fileContent = fs.readFileSync(filePaths[0]).toString();
 
-            let parsedCSV = Papa.parse(fileContent.trim(), {
-              header: true, // creates array of { head: value }
-            });
+    //         let parsedCSV = Papa.parse(fileContent.trim(), {
+    //           header: true, // creates array of { head: value }
+    //         });
 
-            if (parsedCSV.errors.length > 0) {
-              this.$notifyError(
-                this.$t(
-                  "There is an error. Error: ",
-                  parsedCSV.errors[0].message
-                )
-              );
-              return;
-            }
+    //         if (parsedCSV.errors.length > 0) {
+    //           this.$notifyError(
+    //             this.$t(
+    //               "There is an error. Error: ",
+    //               parsedCSV.errors[0].message
+    //             )
+    //           );
+    //           return;
+    //         }
 
-            const itemList = parsedCSV.data.map((item) => {
-              return CryptoTools.encryptPayload(item, [
-                "username",
-                "password",
-                "extra",
-              ]);
-            });
+    //         const itemList = parsedCSV.data.map((item) => {
+    //           return CryptoTools.encryptPayload(item, [
+    //             "username",
+    //             "password",
+    //             "extra",
+    //           ]);
+    //         });
 
-            await this.Import(itemList);
-            this.FetchAll();
-          } catch (error) {
-            this.$notifyError(this.$t("Something went wrong."));
-            console.log(error);
-          }
-        });
-    },
+    //         await this.Import(itemList);
+    //         this.FetchAll();
+    //       } catch (error) {
+    //         this.$notifyError(this.$t("Something went wrong."));
+    //         console.log(error);
+    //       }
+    //     });
+    // },
   },
 };
 </script>
