@@ -75,6 +75,23 @@ const router = new Router({
       ],
     },
     {
+      path: "/notes",
+      name: "Notes",
+      component: require("@/contents/Notes/index").default,
+      children: [
+        {
+          path: "create",
+          name: "NoteCreate",
+          component: require("@/contents/Notes/Create").default,
+        },
+        {
+          path: ":id",
+          name: "NoteDetail",
+          component: require("@/contents/Notes/Detail").default,
+        },
+      ],
+    },
+    {
       path: "/servers",
       name: "Servers",
       component: require("@/contents/Servers/index").default,
