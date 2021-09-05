@@ -41,6 +41,23 @@ const router = new Router({
       ],
     },
     {
+      path: "/credit-cards",
+      name: "CreditCards",
+      component: require("@/contents/CreditCards/index").default,
+      children: [
+        {
+          path: "create",
+          name: "CreditCardCreate",
+          component: require("@/contents/CreditCards/Create").default,
+        },
+        {
+          path: ":id",
+          name: "CreditCardDetail",
+          component: require("@/contents/CreditCards/Detail").default,
+        },
+      ],
+    },
+    {
       path: "/servers",
       name: "Servers",
       component: require("@/contents/Servers/index").default,
