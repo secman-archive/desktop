@@ -3,7 +3,7 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-import CryptoTools from "@/utils/crypto";
+import CryptoTools from "@/tools/crypto";
 
 import AuthService from "@/apis/services/auth";
 import SystemService from "@/apis/services/system";
