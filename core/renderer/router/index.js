@@ -10,7 +10,7 @@ const router = new Router({
     {
       path: "/login",
       name: "Login",
-      component: require("@/views/Auth/Login").default,
+      component: require("@/contents/Auth/Login").default,
       meta: {
         auth: true,
       },
@@ -19,24 +19,41 @@ const router = new Router({
       path: "/",
       name: "Home",
       redirect: "/logins",
-      component: require("@/views/Home/index").default,
+      component: require("@/contents/Home/index").default,
       children: [
         {
           path: "/logins",
           name: "Logins",
-          component: require("@/views/Logins/index").default,
+          component: require("@/contents/Logins/index").default,
           children: [
             {
               path: "create",
               name: "LoginCreate",
-              component: require("@/views/Logins/Create").default,
+              component: require("@/contents/Logins/Create").default,
             },
             {
               path: ":id",
               name: "LoginDetail",
-              component: require("@/views/Logins/Detail").default,
+              component: require("@/contents/Logins/Detail").default,
             },
           ],
+        },
+      ],
+    },
+    {
+      path: "/servers",
+      name: "Servers",
+      component: require("@/contents/Servers/index").default,
+      children: [
+        {
+          path: "create",
+          name: "ServerCreate",
+          component: require("@/contents/Servers/Create").default,
+        },
+        {
+          path: ":id",
+          name: "ServerDetail",
+          component: require("@/contents/Servers/Detail").default,
         },
       ],
     },
