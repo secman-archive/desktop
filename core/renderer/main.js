@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-import "./design/app.scss";
+import "./styles/app.scss";
 import "./config";
 import App from "./App";
 import router from "./router";

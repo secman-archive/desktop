@@ -1,18 +1,19 @@
-/* Configs */
-@import "configs/vars";
-@import "configs/font-face";
-@import "configs/formalize";
+// Config
+@import "config/variables";
+@import "config/font-face";
+@import "config/formalize";
 
-/* Plugins */
+// Plugins
 @import "plugins/v-tooltip";
-@import "plugins/vue-notifications";
+@import "plugins/vue-notifications.scss";
 
-/* Common */
-@import "common/colors";
+// Common
 @import "common/space";
+@import "common/colors";
+@import "common/flexbox";
+@import "common/typography";
 @import "common/display";
 @import "common/visibility";
-@import "common/flexbox";
 
 html {
   color: $color-primary;

@@ -49,7 +49,7 @@ let rendererConfig = {
           {
             loader: "sass-loader",
             options: {
-              prependData: '@import "./core/renderer/design/configs/vars";',
+              prependData: '@import "./core/renderer/styles/config/variables";',
             },
           },
         ],
@@ -117,7 +117,7 @@ let rendererConfig = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({ filename: "design.css" }),
+    new MiniCssExtractPlugin({ filename: "styles.css" }),
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: path.resolve(__dirname, "../core/index.ejs"),
