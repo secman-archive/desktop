@@ -1,5 +1,5 @@
 import EmailsService from "@/apis/services/emails";
-import CryptoTools from "@/utils/crypto";
+import CryptoTools from "@/tools/crypto";
 
 const EncryptedFields = ["email", "password"];
 

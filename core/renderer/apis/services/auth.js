@@ -1,4 +1,4 @@
-import HTTPClient from "@/api/http";
+import HTTPClient from "@/apis/http";
 
 export default class AuthService {
   static async Login(payload) {

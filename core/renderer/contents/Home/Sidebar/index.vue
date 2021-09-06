@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import HTTPClient from "@/api/http";
+import HTTPClient from "@/apis/http";
 import MenuItem from "./MenuItem";
 import electron from "electron";
 import { mapActions, mapState } from "vuex";

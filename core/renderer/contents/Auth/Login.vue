@@ -56,7 +56,7 @@
 
 <script>
 import { mapActions } from "vuex";
-import HTTPClient from "@/api/http";
+import HTTPClient from "@/apis/http";
 
 export default {
   data() {
