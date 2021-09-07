@@ -14,7 +14,7 @@
 
 ## Build -> Run
 
-First sign up via [**Secman Signup Website**](https://signup.secman.dev)
+> First sign up via [**Secman Signup Website**](https://signup.secman.dev)
 
 ### Requirements
 
@@ -29,8 +29,8 @@ First sign up via [**Secman Signup Website**](https://signup.secman.dev)
 yarn
 
 # run secman desktop in dev mode
-yarn run dev
+yarn dev
 
 # build electron application for production
-yarn run build
+yarn build
 ```
