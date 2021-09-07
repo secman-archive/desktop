@@ -4,6 +4,7 @@
   "author": "Secman, Inc.",
   "description": "Secman Desktop",
   "license": "MIT",
+  "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
     "build:dir": "node .electron-vue/build.js && electron-builder --dir",
