@@ -12,7 +12,7 @@
   <a href="https://desktop.secman.dev"><strong>desktop.secman.dev</strong></a>
 </p>
 
-## Build -> Run
+## Build & Run
 
 > First sign up via [**Secman Signup Website**](https://signup.secman.dev)
 
