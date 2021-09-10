@@ -62,7 +62,7 @@ export default {
 
 <style lang="scss">
 .btn {
-  border: 1px solid #151c27;
+  border: 1px solid $color-gray-400;
   border-radius: 8px;
   color: #fff;
   font-weight: 600;

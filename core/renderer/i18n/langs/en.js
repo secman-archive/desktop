@@ -37,4 +37,5 @@ export default {
   ContentHidden: "This content is hidden",
   API500ErrorMessage:
     "An unexpected error seems to have occured. Or you can contact us if the problem persists.",
+  CreateAccount: "Or Create an Account",
 };

@@ -47,8 +47,17 @@
         type="submit"
         :loading="$wait.is($waiters.Auth.Login)"
         size="medium"
+        class="mb-2"
       >
         {{ $t("Login") }}
+      </VButton>
+
+      <VButton
+        size="medium"
+        @click="createAccountURL"
+        style="background-color: white; color: black;"
+      >
+        {{ $t("CreateAccount") }}
       </VButton>
     </form>
   </div>
@@ -57,6 +66,7 @@
 <script>
 import { mapActions } from "vuex";
 import HTTPClient from "@/apis/http";
+import electron from "electron";
 
 export default {
   data() {
@@ -92,6 +102,10 @@ export default {
 
         this.$request(onSuccess, this.$waiters.Auth.Login, onError);
       });
+    },
+
+    createAccountURL() {
+      electron.shell.openExternal("https://signup.secman.dev");
     },
   },
 };
