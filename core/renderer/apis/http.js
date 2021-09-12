@@ -1,11 +1,6 @@
 import Axios from "axios";
-import { _base } from "./secrets.ts";
 
-let baseURL = "http://localhost:3625";
-
-if (process.env.NODE_ENV === "production") {
-  baseURL = _base;
-}
+let baseURL = "https://api.secman.dev";
 
 const client = Axios.create({
   baseURL,

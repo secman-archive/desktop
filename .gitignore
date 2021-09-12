@@ -10,5 +10,3 @@ thumbs.db
 !.gitkeep
 installers
 .idea/
-
-core/renderer/apis/secrets.ts
