@@ -47,6 +47,6 @@ export default class HTTPClient {
   }
 
   static setBaseURL(url) {
-    client.defaults.baseURL = _base;
+    client.defaults.baseURL = baseURL;
   }
 }
