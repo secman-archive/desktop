@@ -19,7 +19,7 @@
 ### Requirements
 
 - [**Node.js**](https://nodejs.org)
-- [**Electron**](https://www.electron.org)
+- [**Electron**](https://www.electronjs.org)
 - [**Vue**](https://vuejs.org)
 
 ### Run
