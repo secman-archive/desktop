@@ -11,10 +11,6 @@ if (process.env.NODE_ENV !== "development") {
 }
 
 let mainWindow;
-const winURL =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:9080"
-    : `file://${__dirname}/index.html`;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -30,7 +26,7 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadURL(winURL);
+  mainWindow.loadURL("https://secman-desktop-server.up.railway.app");
 
   mainWindow.webContents.closeDevTools();
 

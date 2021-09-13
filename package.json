@@ -2,7 +2,7 @@
   "name": "secman-desktop",
   "version": "1.0.0",
   "author": "Secman, Inc.",
-  "description": "Secman Desktop",
+  "description": "🖥️ Secman Desktop is the desktop client for secman.",
   "license": "MIT",
   "main": "./dist/electron/main.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "build:darwinamd64": "cross-env BUILD_TARGET=darwin node .electron-vue/build.js",
     "build:linux": "electron-packager . --overwrite --asar --platform=linux --arch=x64 --icon=res/512x512.png --prune=true --out=build --version-string.CompanyName=secman-desktop --version-string.FileDescription=secman-desktop",
     "build:mas": "cross-env BUILD_TARGET=mas node .electron-vue/build.js",
-    "build:win32": "electron-packager . --overwrite --asar --platform=win32 --arch=x64 --icon=res/icon.ico --prune=true --out=build --version-string.CompanyName=secman-desktop --version-string.FileDescription=secman-desktop",
+    "build:win": "electron-packager . --overwrite --asar --platform=win32 --arch=x64 --icon=res/icon.ico --prune=true --out=build --version-string.CompanyName=secman-desktop --version-string.FileDescription=secman-desktop",
     "dev": "node .electron-vue/dev-runner.js",
     "lint": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter src",
     "lint:fix": "eslint --ext .js,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
@@ -22,6 +22,8 @@
     "pack:linux": "electron-packager . secman-desktop --platform linux --arch x64 --out build",
     "installer:deb": "npx electron-installer-debian --src build/secman-desktop-linux-x64 --arch amd64 --dest installers/ --icon res/512x512.png",
     "installer:rpm": "npx electron-installer-redhat --src build/secman-desktop-linux-x64 --arch amd64 --dest installers/ --icon res/512x512.png",
+    "installer:win": "npx electron-installer-windows --src build/secman-desktop-win32-x64 --arch amd64 --dest installers/ --icon res/icon.ico",
+    "installer:darwin": "npx electron-installer-dmg --src build/secman-desktop-linux-x64 --arch amd64 --dest installers/ --icon res/ico.icns",
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "npm run lint:fix"
