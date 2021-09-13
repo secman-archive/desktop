@@ -26,7 +26,7 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadURL("https://secman-desktop-server.up.railway.app");
+  mainWindow.loadURL("http://localhost:9080");
 
   mainWindow.webContents.closeDevTools();
 
