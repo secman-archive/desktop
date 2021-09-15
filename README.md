@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://desktop.secman.dev"><strong>desktop.secman.dev</strong></a>
+  <a href="https://secman.dev/download#choose"><strong>secman.dev/download</strong></a>
 </p>
 
 ## Build & Run
