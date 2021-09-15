@@ -12,6 +12,11 @@ if (process.env.NODE_ENV !== "development") {
 
 let mainWindow;
 
+const winURL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3750"
+    : `file://${__dirname}/index.html`;
+
 function createWindow() {
   mainWindow = new BrowserWindow({
     height: 560,
@@ -26,7 +31,7 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadURL("http://localhost:9080");
+  mainWindow.loadURL(winURL);
 
   mainWindow.webContents.closeDevTools();
 

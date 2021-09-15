@@ -79,7 +79,7 @@
     <!-- Support -->
     <button class="btn-feedback" @click="onClickSupport">
       <div class="icon">
-        <VIcon name="support" size="14px" />
+        <VIcon v-tooltip="'Get Support'" name="support" size="14px" />
       </div>
     </button>
   </div>
@@ -132,7 +132,7 @@ export default {
           { Authorization: null }
         );
 
-        this.hasUpdate = data.tag_name != version;
+        this.hasUpdate = data.tag_name != "v" + version;
         this.updateLink = data.html_url;
       } catch (err) {
         console.log(err);
@@ -140,7 +140,7 @@ export default {
     },
 
     onClickFeedback() {
-    //   electron.shell.openExternal("https://secman.typeform.com"); when secman typeform is ready
+      //   electron.shell.openExternal("https://secman.typeform.com"); when secman typeform is ready
     },
 
     onClickSupport() {
