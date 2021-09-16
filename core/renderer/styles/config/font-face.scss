@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: normal; /*400*/
   font-display: swap;
-  src: url("/static/fonts/Inter/Inter-Regular.ttf") format("truetype");
+  src: url("https://assets.secman.dev/assets/desktop/Inter/Inter-Regular.ttf") format("truetype");
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 500; /*500*/
   font-display: swap;
-  src: url("/static/fonts/Inter/Inter-Medium.ttf") format("truetype");
+  src: url("https://assets.secman.dev/assets/desktop/Inter/Inter-Medium.ttf") format("truetype");
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   font-style: normal;
   font-weight: bold; /*600*/
   font-display: swap;
-  src: url("/static/fonts/Inter/Inter-SemiBold.ttf") format("truetype");
+  src: url("https://assets.secman.dev/assets/desktop/Inter/Inter-SemiBold.ttf") format("truetype");
 }
 
 // 'IBM Plex Sans'
@@ -28,7 +28,7 @@
   font-style: normal;
   font-weight: bold; /*600*/
   font-display: swap;
-  src: url("/static/fonts/IBMPlexSans/IBMPlexSans-SemiBold.ttf")
+  src: url("https://assets.secman.dev/assets/desktop/IBMPlexSans/IBMPlexSans-SemiBold.ttf")
     format("truetype");
 }
 
@@ -37,7 +37,7 @@
   font-style: normal;
   font-weight: 500; /*500*/
   font-display: swap;
-  src: url("/static/fonts/IBMPlexSans/IBMPlexSans-Medium.ttf")
+  src: url("https://assets.secman.dev/assets/desktop/IBMPlexSans/IBMPlexSans-Medium.ttf")
     format("truetype");
 }
 
@@ -46,6 +46,6 @@
   font-style: normal;
   font-weight: bold; /*600*/
   font-display: swap;
-  src: url("/static/fonts/IBMPlexSans/IBMPlexSans-Regular.ttf")
+  src: url("https://assets.secman.dev/assets/desktop/IBMPlexSans/IBMPlexSans-Regular.ttf")
     format("truetype");
 }
