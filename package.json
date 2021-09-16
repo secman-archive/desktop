@@ -30,6 +30,8 @@
   "build": {
     "productName": "Secman Desktop",
     "appId": "dev.secman.desktop",
+    "afterPack": "./scripts/afterPackHook.js",
+    "afterSign": "electron-builder-notarize",
     "directories": {
       "output": "build"
     },
@@ -64,6 +66,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "crypto-js": "^4.0.0",
+    "dotenv": "^10.0.0",
     "papaparse": "^5.2.0",
     "v-tooltip": "^2.0.3",
     "vee-validate": "2.2.15",
@@ -100,8 +103,10 @@
     "devtron": "^1.4.0",
     "electron": "^11.4.1",
     "electron-builder": "21.2.0",
+    "electron-builder-notarize": "^1.2.0",
     "electron-debug": "^1.5.0",
     "electron-devtools-installer": "^2.2.4",
+    "electron-notarize": "^1.1.1",
     "electron-packager": "^15.0.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
