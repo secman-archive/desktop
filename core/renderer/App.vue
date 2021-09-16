@@ -73,7 +73,7 @@ export default {
     },
 
     onClickLogo() {
-      electron.shell.openExternal("https://desktop.secman.dev");
+      electron.shell.openExternal("https://secman.dev");
     },
 
     // async onExport() {
