@@ -1,7 +1,7 @@
 # Secman Desktop
 
 <p align="center">
-  <img src="https://assets.secman.dev/apps/desktop/tree.svg" />
+  <img src="https://assets.secman.dev/assets/Secman-Desktop.png" />
 </p>
 
 <p align="center">
