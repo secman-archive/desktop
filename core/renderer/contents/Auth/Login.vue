@@ -123,7 +123,7 @@ form {
 	position: absolute;
 	display: flex;
 	justify-content: space-between;
-  background: url(https://assets.secman.dev/assets/blocks.png);
+	background: url("./blocks.png");
 
 	.btn,
 	.form-text-wrapper {
