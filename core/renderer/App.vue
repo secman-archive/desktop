@@ -34,7 +34,7 @@
 		<!-- Content -->
 		<RouterView />
 		<!-- Hidden -->
-		<TheIcons />
+		<Icons />
 		<notifications width="345" position="top center" />
 	</div>
 </template>

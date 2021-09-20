@@ -7,21 +7,6 @@
   >
     <defs>
       <symbol
-        id="passwall-back"
-        viewBox="0 0 448 539"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle
-          cx="0.29258"
-          cy="539.293"
-          r="77.0468"
-          stroke="#00FFD1"
-          stroke-width="10.4915"
-        />
-      </symbol>
-
-      <symbol
         id="right-corner"
         width="82"
         height="83"
@@ -538,6 +523,6 @@
 
 <script>
 export default {
-  name: "TheIcons",
+  name: "Icons",
 };
 </script>
