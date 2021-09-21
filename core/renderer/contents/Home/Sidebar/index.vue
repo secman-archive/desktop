@@ -126,7 +126,7 @@ export default {
 		...mapActions(["Logout"]),
 
 		onClickUpdateApp() {
-			electron.shell.openExternal(this.updateLink || "https://secman.dev");
+			electron.shell.openExternal("https://dl.secman.dev");
 		},
 
 		async checkUpdate() {
@@ -139,7 +139,7 @@ export default {
 				);
 
 				this.hasUpdate = data.tag_name != "v" + version;
-				this.updateLink = data.html_url;
+				// this.updateLink = data.html_url;
 			} catch (err) {
 				console.log(err);
 			}
