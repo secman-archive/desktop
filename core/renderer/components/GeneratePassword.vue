@@ -6,7 +6,7 @@
       class="btn-generate-pass"
       v-tooltip="$t('Generate')"
     >
-      <VIcon name="refresh" size="14px" />
+      <VIcon name="generate" size="14px" />
     </button>
 
     <!-- Popover -->
