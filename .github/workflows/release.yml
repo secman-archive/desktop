@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         id: sm_tag
         run: |
-          npm i powershell
+          npm i powershell shelljs
           node ./release_output.js
 
       - name: Check output
