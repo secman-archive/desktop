@@ -3,8 +3,7 @@ const shell = require("shelljs");
 const os = require("os");
 const version = require("./package.json").version;
 
-const v = "v" + version;
-const cmd = `echo ${v}`;
+const cmd = `echo ${version}`;
 
 if (os.platform === "win32") {
 	let ps = new powershell(cmd);
