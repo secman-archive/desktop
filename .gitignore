@@ -12,3 +12,5 @@ installers
 .idea/
 
 .env
+
+/version
