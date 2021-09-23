@@ -14,7 +14,9 @@ jobs:
       - uses: actions/setup-node@v2.4.0
       - name: Checkout
         id: sm_tag
-        run: node ./release_output.js
+        run: |
+          npm i powershell
+          node ./release_output.js
 
       - name: Check output
         env:
