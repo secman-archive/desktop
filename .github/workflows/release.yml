@@ -12,33 +12,27 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: actions/setup-node@v2.4.0
-      - name: Checkout
-        id: sm_tag
-        run: |
-          npm i powershell shelljs
-          node ./release_output.js
-          Remove-Item -Force -Recurse package-lock.json
-
-      # - name: Check output
-      #   env:
-      #     SM_VERSION: ${{ steps.sm_tag.outputs.tag }}
-      #   run: echo $SM_VERSION
-      
-      - uses: actions/setup-node@v2.4.0
         with:
           node-version: 12
 
+      - name: Install Dependencies
+        run: yarn
+
       - name: Install & Build
         run: |
-          yarn
-          yarn build:dir
+          node ./release_output.js
           yarn build:win
-      
+
       - name: Create Installer
         run: yarn installer:win
+
+      - name: Rename Installer
+        run: |
+          $tag_name=(cat version).replace(' ','')
+          mv ./installers/secman_desktop-$tag_name-setup.msi ./installers/secman-desktop-setup.msi
 
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./installers/secman_desktop-${{ steps.sm_tag.outputs.tag }}-setup.msi
+          files: ./installers/secman-desktop-setup.msi
           draft: true
