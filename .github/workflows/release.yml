@@ -21,9 +21,11 @@ jobs:
         uses: Borales/actions-yarn@v2.3.0
         with:
           cmd: install
+      - name: Build
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: build:win
+      - name: Create Installer
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: installer:win
@@ -47,9 +49,11 @@ jobs:
         uses: Borales/actions-yarn@v2.3.0
         with:
           cmd: install
+      - name: Build
       - uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: build
+          cmd: build:linux
+      - name: Create Installer
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: installer:deb
@@ -73,9 +77,11 @@ jobs:
         uses: Borales/actions-yarn@v2.3.0
         with:
           cmd: install
+      - name: Build
       - uses: borales/actions-yarn@v2.3.0
         with:
-          cmd: build
+          cmd: build:darwin
+      - name: Create Installer
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: installer:dmg
@@ -97,9 +103,11 @@ jobs:
         uses: Borales/actions-yarn@v2.3.0
         with:
           cmd: install
+      - name: Build
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: build
+      - name: Create Installer
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: installer:rpm
