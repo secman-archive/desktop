@@ -31,6 +31,7 @@ jobs:
       - name: Install & Build
         run: |
           yarn
+          yarn build:dir
           yarn build:win
       
       - name: Create Installer
@@ -40,3 +41,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: "./installers/secman_desktop-$SM_VERSION-setup.msi"
+          draft: true
