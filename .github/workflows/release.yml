@@ -1,0 +1,109 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Checkout
+        id: sm_tag
+        run: |
+          node ./release_output.js
+      - name: Check output
+        env:
+          SM_VERSION: ${{ steps.sm_tag.outputs.tag }}
+      - name: Install Packages
+        uses: Borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build:win
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: installer:win
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "./installers/secman_desktop-$SM_VERSION-setup.msi"
+  
+  deb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Checkout
+        id: sm_tag
+        run: |
+          node ./release_output.js
+      - name: Check output
+        env:
+          SM_VERSION: ${{ steps.sm_tag.outputs.tag }}
+      - name: Install Packages
+        uses: Borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: installer:deb
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "./installers/secman-desktop_$SM_VERSION_amd64.deb"
+
+  mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Checkout
+        id: sm_tag
+        run: |
+          node ./release_output.js
+      - name: Check output
+        env:
+          SM_VERSION: ${{ steps.sm_tag.outputs.tag }}
+      - name: Install Packages
+        uses: Borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: installer:dmg
+      - name: List files (Test)
+        run: ls installers
+
+  rpm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Checkout
+        id: sm_tag
+        run: |
+          node ./release_output.js
+      - name: Check output
+        env:
+          SM_VERSION: ${{ steps.sm_tag.outputs.tag }}
+      - name: Install Packages
+        uses: Borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: installer:rpm
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "./installers/secman-desktop-$SM_VERSION-1.amd64.rpm"
