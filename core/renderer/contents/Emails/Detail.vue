@@ -69,7 +69,7 @@
             <!-- Text -->
             <div v-else class="d-flex flex-items-center px-3 py-2">
               <span
-                v-text="showPass ? form.password : '********'"
+                v-text="showPass ? form.password : _hidden"
                 class="mr-2"
               />
             </div>
@@ -172,6 +172,10 @@ export default {
       return [`Title: ${this.form.title}`, `Email: ${this.form.email}`].join(
         "\n"
       );
+    },
+
+    _hidden() {
+      return "•".repeat(this.form.password.length);
     },
   },
 };

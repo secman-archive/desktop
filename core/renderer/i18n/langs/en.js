@@ -34,7 +34,7 @@ export default {
   "There is an update available.": "There is an update available.",
   "Search passwords, websites, notes": "Search passwords, websites, notes",
   "There is nothing here, yet...": "There is nothing here, yet...",
-  ContentHidden: "This content is hidden",
+  ContentHidden: "...",
   API500ErrorMessage:
     "An unexpected error seems to have occured. Or you can contact us if the problem persists.",
   CreateAccount: "Or Create an Account",

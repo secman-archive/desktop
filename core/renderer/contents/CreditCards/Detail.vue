@@ -90,7 +90,7 @@
             <!-- Text -->
             <div v-else class="d-flex flex-items-center px-3 py-2">
               <span
-                v-text="showPass ? form.verification_number : '********'"
+                v-text="showPass ? form.verification_number : _hidden"
                 class="mr-2"
               />
             </div>
@@ -190,6 +190,10 @@ export default {
         `Type: ${this.form.type}`,
         `Number: ${this.form.number}`,
       ].join("\n");
+    },
+
+    _hidden() {
+      return "•".repeat(this.form.verification_number.length);
     },
   },
 };

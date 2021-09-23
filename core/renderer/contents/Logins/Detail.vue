@@ -76,7 +76,7 @@
             <!-- Text -->
             <div v-else class="d-flex px-3 py-2">
               <span
-                v-text="showPass ? form.password : _password"
+                v-text="showPass ? form.password : _hidden"
                 class="mr-2"
               />
             </div>
@@ -219,8 +219,8 @@ export default {
       return this.form.title || this.form.url;
     },
 
-    _password() {
-      return "#".repeat(this.form.password.length);
+    _hidden() {
+      return "•".repeat(this.form.password.length);
     },
   },
 };

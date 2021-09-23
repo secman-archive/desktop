@@ -16,7 +16,7 @@
         </template>
         <!-- Empty State -->
         <div v-else class="flex-center flex-column c-gray-700 h-100">
-          <VIcon name="logo-outline" size="48" class="mt-n7" />
+          <VIcon name="stack" size="48" class="mt-n7" />
           <span
             class="fs-big mt-3"
             v-text="$t('There is nothing here, yet...')"
