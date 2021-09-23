@@ -85,7 +85,7 @@ jobs:
       - name: Rename Installer
         run: |
           export tag_name=$(cat version)
-          mv ./installers/secman-desktop_$tag_name_amd64.deb ./installers/secman-desktop-amd64.deb
+          mv ./installers/secman-desktop_${tag_name}_amd64.deb ./installers/secman-desktop-amd64.deb
 
       - name: Release It
         uses: softprops/action-gh-release@v1
