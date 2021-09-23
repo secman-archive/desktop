@@ -25,12 +25,17 @@ jobs:
         run: echo $SM_VERSION
       
       - uses: actions/setup-node@v2.4.0
-      - name: Core
+        with:
+          node-version: 15
+
+      - name: Install & Build
         run: |
-          npm i -g yarn
+          # npm i -g yarn
           yarn
           yarn build:win
-          yarn installer:win
+      
+      - name: Create Installer
+        run: yarn installer:win
 
       - name: Release
         uses: softprops/action-gh-release@v1
