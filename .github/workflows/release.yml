@@ -31,7 +31,7 @@ jobs:
           $tag_name=(cat version).replace(' ','')
           mv ./installers/secman_desktop-$tag_name-setup.msi ./installers/secman-desktop-setup.msi
 
-      - name: Release It
+      - name: Upload It
         uses: softprops/action-gh-release@v1
         with:
           files: ./installers/secman-desktop-setup.msi
@@ -49,16 +49,18 @@ jobs:
         run: yarn
 
       - name: Build
-        run: |
-          node ./release_output.js
-          yarn build:darwin
+        run: yarn build:darwin
 
       - name: Create Installer
         run: yarn installer:darwin
 
-      - name: List Installer (Test)
-        run: |
-          ls -a ./installers
+      - name: Rename Installer
+        run: mv ./installers/Secman Desktop.dmg ./installers/secman-desktop-setup.dmg
+
+      - name: Upload It
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./installers/secman-desktop-setup.dmg
 
   deb:
     runs-on: ubuntu-latest
@@ -85,12 +87,12 @@ jobs:
       - name: Rename Installer
         run: |
           export tag_name=$(cat version)
-          mv ./installers/secman-desktop_${tag_name}_amd64.deb ./installers/secman-desktop-amd64.deb
+          mv ./installers/secman-desktop_${tag_name}_amd64.deb ./installers/secman-desktop-setup.deb
 
-      - name: Release It
+      - name: Upload It
         uses: softprops/action-gh-release@v1
         with:
-          files: ./installers/secman-desktop-amd64.deb
+          files: ./installers/secman-desktop-setup.deb
 
   rpm:
     runs-on: ubuntu-latest
@@ -117,9 +119,38 @@ jobs:
       - name: Rename Installer
         run: |
           export tag_name=$(cat version)
-          mv ./installers/secman-desktop-$tag_name-1.amd64.rpm ./installers/secman-desktop-amd64.rpm
+          mv ./installers/secman-desktop-$tag_name-1.amd64.rpm ./installers/secman-desktop-setup.rpm
 
-      - name: Release It
+      - name: Upload It
         uses: softprops/action-gh-release@v1
         with:
-          files: ./installers/secman-desktop-amd64.rpm
+          files: ./installers/secman-desktop-setup.rpm
+
+  appImage:
+    needs: [ deb, rpm ]
+    runs-on: ubuntu-latest
+    steps:
+      steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2.4.0
+        with:
+          node-version: 12
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Build
+        run: |
+          node ./release_output.js
+          yarn build
+
+      - name: Rename AppImage File
+        run: |
+          export tag_name=$(cat version)
+          mv ./build/Secman Desktop-$tag_name.AppImage ./build/secman-desktop.AppImage
+
+      - name: Upload It
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./build/secman-desktop.AppImage
