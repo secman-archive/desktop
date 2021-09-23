@@ -16,20 +16,20 @@ jobs:
       - name: Check output
         env:
           SM_VERSION: ${{ steps.sm_tag.outputs.tag }}
-      - name: Install Packages
       - uses: Borales/actions-yarn@v2.3.0
+      - name: Install Packages
         with:
           cmd: install
-      - name: Build
       - uses: borales/actions-yarn@v2.3.0
+      - name: Build
         with:
           cmd: build:win
-      - name: Create Installer
       - uses: borales/actions-yarn@v2.3.0
+      - name: Create Installer
         with:
           cmd: installer:win
+      - uses: softprops/action-gh-release@v1
       - name: Release
-        uses: softprops/action-gh-release@v1
         with:
           files: "./installers/secman_desktop-$SM_VERSION-setup.msi"
   
@@ -43,20 +43,20 @@ jobs:
       - name: Check output
         env:
           SM_VERSION: ${{ steps.sm_tag.outputs.tag }}
-      - name: Install Packages
       - uses: Borales/actions-yarn@v2.3.0
+      - name: Install Packages
         with:
           cmd: install
-      - name: Build
       - uses: borales/actions-yarn@v2.3.0
+      - name: Build
         with:
           cmd: build:linux
-      - name: Create Installer
       - uses: borales/actions-yarn@v2.3.0
+      - name: Create Installer
         with:
           cmd: installer:deb
+      - uses: softprops/action-gh-release@v1
       - name: Release
-        uses: softprops/action-gh-release@v1
         with:
           files: "./installers/secman-desktop_$SM_VERSION_amd64.deb"
 
@@ -105,7 +105,7 @@ jobs:
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: installer:rpm
+      - uses: softprops/action-gh-release@v1
       - name: Release
-        uses: softprops/action-gh-release@v1
         with:
           files: "./installers/secman-desktop-$SM_VERSION-1.amd64.rpm"
