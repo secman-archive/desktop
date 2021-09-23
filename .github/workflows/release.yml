@@ -40,5 +40,5 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: "./installers/secman_desktop-${{ steps.sm_tag.outputs.tag }}-setup.msi"
+          files: ./installers/secman_desktop-${{ steps.sm_tag.outputs.tag }}-setup.msi
           draft: true
