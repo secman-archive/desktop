@@ -19,6 +19,7 @@ jobs:
       - name: Check output
         env:
           SM_VERSION: ${{ steps.sm_tag.outputs.tag }}
+        run: echo $SM_VERSION
       
       - uses: actions/setup-node@v2.4.0
       - name: Core
