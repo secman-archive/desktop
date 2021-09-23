@@ -19,10 +19,10 @@ jobs:
           node ./release_output.js
           Remove-Item -Force -Recurse package-lock.json
 
-      - name: Check output
-        env:
-          SM_VERSION: ${{ steps.sm_tag.outputs.tag }}
-        run: echo $SM_VERSION
+      # - name: Check output
+      #   env:
+      #     SM_VERSION: ${{ steps.sm_tag.outputs.tag }}
+      #   run: echo $SM_VERSION
       
       - uses: actions/setup-node@v2.4.0
         with:
@@ -40,5 +40,5 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: "./installers/secman_desktop-$SM_VERSION-setup.msi"
+          files: "./installers/secman_desktop-${{ steps.sm_tag.outputs.tag }}-setup.msi"
           draft: true
