@@ -22,7 +22,7 @@
     "installer:deb": "npx electron-installer-debian --src build/secman-desktop-linux-x64 --arch amd64 --dest installers/ --icon res/512x512.png",
     "installer:rpm": "npx electron-installer-redhat --src build/secman-desktop-linux-x64 --arch amd64 --dest installers/ --icon res/512x512.png",
     "installer:win": "electron-installer-windows --src build/secman-desktop-win32-x64 --arch amd64 --dest installers/ --icon res/icon.ico",
-    "installer:darwin": "electron-installer-dmg ./build/secman-desktop-darwin-x64/secman-desktop.app 'Secman Desktop' --out installers/ --icon res/ico.icns",
+    "installer:darwin": "electron-installer-dmg ./build/secman-desktop-darwin-x64/secman-desktop.app 'Secman Desktop' --out installers/ --icon res/icon.icns",
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "npm run lint:fix"
