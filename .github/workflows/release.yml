@@ -11,8 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: actions/setup-node@v2.4.0
       - name: Checkout
-        uses: actions/setup-node@v2.4.0
         id: sm_tag
         run: node ./release_output.js
 
@@ -20,8 +20,8 @@ jobs:
         env:
           SM_VERSION: ${{ steps.sm_tag.outputs.tag }}
       
+      - uses: actions/setup-node@v2.4.0
       - name: Core
-        uses: actions/setup-node@v2.4.0
         run: |
           npm i -g yarn
           yarn
