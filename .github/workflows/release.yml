@@ -6,7 +6,7 @@ on:
       - "v*.*.*"
 
 jobs:
-  windows:
+  win:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,7 +18,7 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
-      - name: Install & Build
+      - name: Build
         run: |
           node ./release_output.js
           yarn build:win
@@ -31,8 +31,95 @@ jobs:
           $tag_name=(cat version).replace(' ','')
           mv ./installers/secman_desktop-$tag_name-setup.msi ./installers/secman-desktop-setup.msi
 
-      - name: Release
+      - name: Release It
         uses: softprops/action-gh-release@v1
         with:
           files: ./installers/secman-desktop-setup.msi
-          draft: true
+
+  mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2.4.0
+        with:
+          node-version: 12
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Build
+        run: |
+          node ./release_output.js
+          yarn build:darwin
+
+      - name: Create Installer
+        run: yarn installer:darwin
+
+      - name: List Installer (Test)
+        run: |
+          ls -a ./installers
+
+  deb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2.4.0
+        with:
+          node-version: 12
+
+      - name: Install Dependencies
+        run: |
+          yarn
+          sudo apt-get install fakeroot -y
+
+      - name: Build
+        run: |
+          node ./release_output.js
+          yarn build:linux
+
+      - name: Create Installer
+        run: yarn installer:deb
+
+      - name: Rename Installer
+        run: |
+          export tag_name=$(cat version)
+          mv ./installers/secman-desktop_$tag_name_amd64.deb ./installers/secman-desktop-amd64.deb
+
+      - name: Release It
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./installers/secman-desktop-amd64.deb
+
+  rpm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2.4.0
+        with:
+          node-version: 12
+
+      - name: Install Dependencies
+        run: |
+          yarn
+          sudo apt-get install rpm -y
+
+      - name: Build
+        run: |
+          node ./release_output.js
+          yarn build:linux
+
+      - name: Create Installer
+        run: yarn installer:rpm
+
+      - name: Rename Installer
+        run: |
+          export tag_name=$(cat version)
+          mv ./installers/secman-desktop-$tag_name-1.amd64.rpm ./installers/secman-desktop-amd64.rpm
+
+      - name: Release It
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./installers/secman-desktop-amd64.rpm
