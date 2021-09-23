@@ -17,6 +17,7 @@ jobs:
         run: |
           npm i powershell shelljs
           node ./release_output.js
+          Remove-Item -Force -Recurse package-lock.json
 
       - name: Check output
         env:
