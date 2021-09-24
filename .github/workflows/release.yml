@@ -29,12 +29,12 @@ jobs:
       - name: Rename Installer
         run: |
           $tag_name=(cat version).replace(' ','')
-          mv ./installers/secman_desktop-$tag_name-setup.msi ./installers/secman-desktop-setup.msi
+          mv ./installers/secman_desktop-$tag_name-setup.exe ./installers/secman-desktop-setup.exe
 
       - name: Upload It
         uses: softprops/action-gh-release@v1
         with:
-          files: ./installers/secman-desktop-setup.msi
+          files: ./installers/secman-desktop-setup.exe
 
   mac:
     runs-on: macos-latest
