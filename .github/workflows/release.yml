@@ -55,7 +55,7 @@ jobs:
         run: yarn installer:darwin
 
       - name: Rename Installer
-        run: mv ./installers/Secman Desktop.dmg ./installers/secman-desktop-setup.dmg
+        run: mv "./installers/Secman Desktop.dmg" ./installers/secman-desktop-setup.dmg
 
       - name: Upload It
         uses: softprops/action-gh-release@v1
@@ -147,7 +147,7 @@ jobs:
       - name: Rename AppImage File
         run: |
           export tag_name=$(cat version)
-          mv ./build/Secman Desktop-$tag_name.AppImage ./build/secman-desktop.AppImage
+          mv "./build/Secman Desktop-$tag_name.AppImage" ./build/secman-desktop.AppImage
 
       - name: Upload It
         uses: softprops/action-gh-release@v1
