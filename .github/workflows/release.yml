@@ -87,12 +87,12 @@ jobs:
       - name: Rename Installer
         run: |
           export tag_name=$(cat version)
-          mv ./installers/secman-desktop_${tag_name}_amd64.deb ./installers/secman-desktop-setup.deb
+          mv ./installers/secman-desktop_${tag_name}_amd64.deb ./installers/secman-desktop-setup-amd64.deb
 
       - name: Upload It
         uses: softprops/action-gh-release@v1
         with:
-          files: ./installers/secman-desktop-setup.deb
+          files: ./installers/secman-desktop-setup-amd64.deb
 
   rpm:
     runs-on: ubuntu-latest
@@ -119,16 +119,18 @@ jobs:
       - name: Rename Installer
         run: |
           export tag_name=$(cat version)
-          mv ./installers/secman-desktop-$tag_name-1.amd64.rpm ./installers/secman-desktop-setup.rpm
+          mv ./installers/secman-desktop-$tag_name-1.amd64.rpm ./installers/secman-desktop-setup-amd64.rpm
 
       - name: Upload It
         uses: softprops/action-gh-release@v1
         with:
-          files: ./installers/secman-desktop-setup.rpm
+          files: ./installers/secman-desktop-setup-amd64.rpm
 
   appImage:
     needs: [ deb, rpm ]
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
     steps:
       - uses: actions/checkout@v2
 
