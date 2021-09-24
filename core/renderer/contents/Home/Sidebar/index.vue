@@ -126,7 +126,7 @@ export default {
 		...mapActions(["Logout"]),
 
 		onClickUpdateApp() {
-			electron.shell.openExternal("https://dl.secman.dev");
+			electron.shell.openExternal("https://d.secman.dev");
 		},
 
 		async checkUpdate() {
