@@ -106,10 +106,6 @@ export default {
 </script>
 
 <style lang="scss">
-input {
-  color: black;
-}
-
 form {
 	display: inline-block;
 	margin-left: auto;
@@ -123,7 +119,16 @@ form {
 	position: absolute;
 	display: flex;
 	justify-content: space-between;
-	background: url("./blocks.png");
+	background: linear-gradient(
+			38.73deg,
+			rgba(0, 132, 255, 0.219) 0%,
+			rgba(201, 32, 184, 0) 50%
+		),
+		linear-gradient(
+			141.27deg,
+			rgba(0, 70, 209, 0) 50%,
+			rgba(0, 85, 255, 0.25) 100%
+		);
 
 	.btn,
 	.form-text-wrapper {

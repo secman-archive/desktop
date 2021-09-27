@@ -150,7 +150,7 @@ export default {
 		},
 
 		onClickSupport() {
-			electron.shell.openExternal("https://support.secman.dev");
+			electron.shell.openExternal("https://secman.dev/support");
 		},
 
 		onClickUpdate() {
