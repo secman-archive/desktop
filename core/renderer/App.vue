@@ -6,7 +6,7 @@
 				<VIcon name="sm-logo" />
 			</button>
 			<!-- Search -->
-			<div class="app-header-search" v-if="access_token">
+			<div class="app-header-search" v-if="authenticated">
 				<div class="app-header-search-wrapper">
 					<input
 						type="text"
@@ -44,7 +44,7 @@ import electron, { remote } from "electron";
 import { mapActions, mapMutations, mapState } from "vuex";
 
 export default {
-	computed: mapState(["access_token", "searchQuery"]),
+	computed: mapState(["authenticated", "searchQuery"]),
 
 	methods: {
 		...mapActions(["Logout"]),
