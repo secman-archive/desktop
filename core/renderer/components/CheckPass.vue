@@ -11,7 +11,7 @@
 
 <script>
 import Axios from "axios";
-import CryptoUtils from "@/utils/crypto";
+import CryptoUtils from "@/tools/crypto";
 
 export default {
 	name: "CheckPass",

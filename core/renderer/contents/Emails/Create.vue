@@ -83,7 +83,6 @@
 import { mapActions } from "vuex";
 
 export default {
-  components: { ShowPassBtn },
 	data() {
 		return {
 			showPass: false,

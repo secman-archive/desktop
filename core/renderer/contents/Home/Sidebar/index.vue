@@ -94,7 +94,7 @@
 <script>
 import MenuItem from "./MenuItem";
 import electron from "electron";
-import { mapGetters, mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 import Axios from "axios";
 
 export default {
