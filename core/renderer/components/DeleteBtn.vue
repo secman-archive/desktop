@@ -1,12 +1,21 @@
 <template>
-	<button class="delete-btn ml-1 trsn" v-tooltip="$t('Delete')">
+	<button
+		class="delete-btn ml-1 trsn"
+		v-tooltip="$t('Delete')"
+		v-on:click="deleteItem"
+	>
 		<VIcon name="trash" size="14px" />
 	</button>
 </template>
 
 <script>
 export default {
-	name: "DeleteBtn"
+	name: "DeleteBtn",
+	methods: {
+		deleteItem() {
+			this.$emit("click");
+		}
+	}
 };
 </script>
 
@@ -23,6 +32,6 @@ export default {
 }
 
 .delete-btn:hover {
-	color: $color-secondary;
+	color: $color-danger;
 }
 </style>

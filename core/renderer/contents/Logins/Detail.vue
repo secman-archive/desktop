@@ -14,14 +14,7 @@
 			<!-- Edit Btn -->
 			<EditBtn v-if="!isEditMode" @click="isEditMode = $event" />
 			<ClipboardButton :copy="copyContent" />
-			<!-- Delete -->
-			<button
-				class="detail-page-header-icon"
-				v-tooltip="$t('Delete')"
-				@click="onClickDelete"
-			>
-				<VIcon name="trash" size="14px" />
-			</button>
+			<DeleteBtn @click="onClickDelete" />
 		</div>
 		<!-- Content -->
 		<PerfectScrollbar class="detail-page-content">
@@ -74,17 +67,8 @@
 					<div class="d-flex flex-items-end flex-content-between">
 						<label v-text="$t('EXTRA')" />
 						<div class="d-flex flex-items-center">
-							<!-- Copy -->
 							<ClipboardButton :copy="form.extra" />
-							<!-- Show/Hide -->
-							<button
-								type="button"
-								@click="showExtra = !showExtra"
-								class="detail-page-header-icon ml-2"
-								v-tooltip="$t(showExtra ? 'Hide' : 'Show')"
-							>
-								<VIcon :name="showExtra ? 'eye-off' : 'eye'" size="12px" />
-							</button>
+							<ShowPassBtn @click="showExtra = $event" />
 						</div>
 					</div>
 					<div class="d-flex">
