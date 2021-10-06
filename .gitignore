@@ -14,3 +14,5 @@ installers
 .env
 
 /version
+
+/core/renderer/contents/Home/Sidebar/supporter.js
