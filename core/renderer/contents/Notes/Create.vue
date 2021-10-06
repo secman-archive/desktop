@@ -52,7 +52,7 @@
             v-model="form.note"
             v-validate="'required'"
             name="Note"
-            rows="17"
+            rows="14"
           />
         </div>
 
