@@ -11,24 +11,8 @@
 				<span v-text="form.number" class="email" />
 			</div>
 
-			<!-- Edit Btn -->
-			<button
-				v-if="!isEditMode"
-				class="detail-page-header-icon"
-				v-tooltip="$t('Edit')"
-				@click="isEditMode = true"
-			>
-				<VIcon name="pencil" size="14px" />
-			</button>
-
-			<!-- Copy -->
-			<button
-				class="detail-page-header-icon"
-				v-tooltip="$t('Copy')"
-				v-clipboard:copy="creditCardCopyContent"
-			>
-				<VIcon name="duplicate" size="14px" />
-			</button>
+			<EditBtn v-if="!isEditMode" @click="isEditMode = $event" />
+			<ClipboardButton :copy="copyContent" />
 			<!-- Delete -->
 			<button
 				class="detail-page-header-icon"
@@ -181,7 +165,7 @@ export default {
 			return this.$wait.is(this.$waiters.CreditCards.Update);
 		},
 
-		creditCardCopyContent() {
+		copyContent() {
 			return [
 				`Card Name: ${this.form.title}`,
 				`Cardholder Name: ${this.form.cardholder_name}`,

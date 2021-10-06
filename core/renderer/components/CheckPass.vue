@@ -2,7 +2,7 @@
 	<button
 		type="button"
 		@click="checkPassword"
-		class="pass-check-btn ml-1"
+		class="pass-check-btn ml-1 trsn"
 		v-tooltip="$t('CheckIfExposed')"
 	>
 		<VIcon name="check" size="14px" />
@@ -86,5 +86,9 @@ export default {
 	border-radius: 4px;
 	background-color: $color-gray-500;
 	color: $color-gray-300;
+}
+
+.pass-check-btn:hover {
+	color: $color-secondary;
 }
 </style>

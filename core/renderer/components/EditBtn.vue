@@ -1,26 +1,26 @@
 <template>
 	<button
-		type="button"
-		class="showpass-btn ml-1 trsn"
-		v-tooltip="$t(isShow ? 'Hide' : 'Show')"
+		v-if="!isEditMode"
+		class="edit-btn ml-1 trsn"
+		v-tooltip="$t('Edit')"
 		v-on="inputListeners"
 	>
-		<VIcon class="c-pointer" :name="isShow ? 'eye-off' : 'eye'" size="14px" />
+		<VIcon name="pencil" size="14px" />
 	</button>
 </template>
 
 <script>
 export default {
-	name: "ShowPassBtn",
+	name: "EditBtn",
 	data() {
-		return { isShow: false };
+		return { isEditMode: false };
 	},
 	computed: {
 		inputListeners() {
 			return Object.assign({}, this.$listeners, {
 				click: event => {
-					this.isShow = !this.isShow;
-					return this.$emit("click", this.isShow);
+					this.isEditMode = !this.isEditMode;
+					return this.$emit("click", this.isEditMode);
 				}
 			});
 		}
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss">
-.showpass-btn {
+.edit-btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -40,7 +40,7 @@ export default {
 	color: $color-gray-300;
 }
 
-.showpass-btn:hover {
+.edit-btn:hover {
 	color: $color-secondary;
 }
 </style>

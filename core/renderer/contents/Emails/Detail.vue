@@ -11,24 +11,8 @@
 				<span v-text="form.email" class="email" />
 			</div>
 
-			<!-- Edit Btn -->
-			<button
-				v-if="!isEditMode"
-				class="detail-page-header-icon"
-				v-tooltip="$t('Edit')"
-				@click="isEditMode = true"
-			>
-				<VIcon name="pencil" size="14px" />
-			</button>
-
-			<!-- Copy -->
-			<button
-				class="detail-page-header-icon"
-				v-tooltip="$t('Copy')"
-				v-clipboard:copy="emailCopyContent"
-			>
-				<VIcon name="duplicate" size="14px" />
-			</button>
+			<EditBtn v-if="!isEditMode" @click="isEditMode = $event" />
+			<ClipboardButton :copy="copyContent" />
 			<!-- Delete -->
 			<button
 				class="detail-page-header-icon"
@@ -126,6 +110,7 @@ export default {
 				if (index !== -1) {
 					this.ItemList.splice(index, 1);
 				}
+
 				this.$router.push({ name: "Emails", params: { openFirst: true } });
 			};
 
@@ -150,7 +135,7 @@ export default {
 			return this.$wait.is(this.$waiters.Emails.Update);
 		},
 
-		emailCopyContent() {
+		copyContent() {
 			return [`Title: ${this.form.title}`, `Email: ${this.form.email}`].join(
 				"\n"
 			);

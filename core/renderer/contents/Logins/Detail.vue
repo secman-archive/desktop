@@ -11,24 +11,9 @@
 				<span v-text="form.username" class="email" />
 			</div>
 
-      <!-- Edit Btn -->
-      <button
-        v-if="!isEditMode"
-        class="detail-page-header-icon"
-        v-tooltip="$t('Edit')"
-        @click="isEditMode = true"
-      >
-        <VIcon name="pencil" size="14px" />
-      </button>
-
-			<!-- Copy -->
-			<button
-				class="detail-page-header-icon"
-				v-tooltip="$t('Copy')"
-				v-clipboard:copy="loginCopyContent"
-			>
-				<VIcon name="duplicate" size="14px" />
-			</button>
+			<!-- Edit Btn -->
+			<EditBtn v-if="!isEditMode" @click="isEditMode = $event" />
+			<ClipboardButton :copy="copyContent" />
 			<!-- Delete -->
 			<button
 				class="detail-page-header-icon"
@@ -187,7 +172,7 @@ export default {
 			return this.$wait.is(this.$waiters.Logins.Update);
 		},
 
-		loginCopyContent() {
+		copyContent() {
 			return [
 				`Title: ${this.form.title}`,
 				`URL: ${this.form.url}`,

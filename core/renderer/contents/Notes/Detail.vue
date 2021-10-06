@@ -10,24 +10,8 @@
 				<span v-text="form.title" class="url" />
 			</div>
 
-			<!-- Edit Btn -->
-			<button
-				v-if="!isEditMode"
-				class="detail-page-header-icon"
-				v-tooltip="$t('Edit')"
-				@click="isEditMode = true"
-			>
-				<VIcon name="pencil" size="14px" />
-			</button>
-
-			<!-- Copy -->
-			<button
-				class="detail-page-header-icon"
-				v-tooltip="$t('Copy')"
-				v-clipboard:copy="noteCopyContent"
-			>
-				<VIcon name="duplicate" size="14px" />
-			</button>
+			<EditBtn v-if="!isEditMode" @click="isEditMode = $event" />
+			<ClipboardButton :copy="copyContent" />
 			<!-- Delete -->
 			<button
 				class="detail-page-header-icon"
@@ -150,7 +134,7 @@ export default {
 			return this.$wait.is(this.$waiters.Notes.Update);
 		},
 
-		noteCopyContent() {
+		copyContent() {
 			return [`Title: ${this.form.title}`, `Note: ${this.form.note}`].join(
 				"\n"
 			);

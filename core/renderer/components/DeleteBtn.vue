@@ -1,29 +1,17 @@
 <template>
-	<button
-		type="button"
-		class="clipboard-btn ml-1 trsn"
-		v-clipboard:copy="copy"
-		v-tooltip="$t('Copy')"
-	>
-		<VIcon name="duplicate" size="14px" />
+	<button class="delete-btn ml-1 trsn" v-tooltip="$t('Delete')">
+		<VIcon name="trash" size="14px" />
 	</button>
 </template>
 
 <script>
 export default {
-	name: "ClipboardButton",
-
-	props: {
-		copy: {
-			type: String,
-			default: ""
-		}
-	}
+	name: "DeleteBtn"
 };
 </script>
 
 <style lang="scss">
-.clipboard-btn {
+.delete-btn {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -34,7 +22,7 @@ export default {
 	color: $color-gray-300;
 }
 
-.clipboard-btn:hover {
+.delete-btn:hover {
 	color: $color-secondary;
 }
 </style>
