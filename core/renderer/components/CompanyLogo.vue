@@ -38,6 +38,7 @@ export default {
     font-weight: $font-weight-semibold;
   }
 }
+
 .company-logo {
   border-radius: 5px;
   height: 100%;

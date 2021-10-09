@@ -188,9 +188,9 @@
 					<div class="d-flex">
 						<VTextArea
 							v-model="form.extra"
-							:sensitive="!isEditMode && !showExtra"
+							:sensitive="!showExtra"
 							:placeholder="$t(isEditMode ? 'ClickToFill' : 'ContentHidden')"
-							:disabled="!isEditMode"
+							:disabled="!isEditMode || !showExtra"
 						/>
 					</div>
 				</div>

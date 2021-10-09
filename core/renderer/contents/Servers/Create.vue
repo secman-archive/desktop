@@ -132,35 +132,30 @@
 							theme="no-border"
 						/>
 						<GeneratePassword v-model="form.admin_password" />
-            <CheckPass :password="form.admin_password" />
-            <ShowPassBtn @click="showAdminPass = $event" />
+						<CheckPass :password="form.admin_password" />
+						<ShowPassBtn @click="showAdminPass = $event" />
 						<ClipboardButton :copy="form.admin_password" />
 					</div>
 				</div>
 
 				<!-- Extra -->
 				<div class="form-row">
-					<div class="d-flex flex-content-between">
+					<div class="d-flex flex-items-end flex-content-between">
 						<label v-text="$t('EXTRA')" />
-						<!-- Show/Hide -->
-						<button
-							class="detail-page-header-icon mt-2 ml-n1"
-							v-tooltip="$t(showExtra ? 'Hide' : 'Show')"
-						>
-							<VIcon
-								name="eye-off"
-								v-if="showExtra"
-								size="12px"
-								@click="showExtra = false"
-							/>
-							<VIcon name="eye" v-else size="12px" @click="showExtra = true" />
-						</button>
+						<div class="d-flex flex-items-center">
+							<ClipboardButton :copy="form.extra" />
+							<ShowPassBtn @click="showExtra = $event" />
+						</div>
 					</div>
-					<VTextArea
-						:placeholder="$t('ClickToFill')"
-						v-model="form.extra"
-						name="Extra"
-					/>
+					<div class="d-flex">
+						<VTextArea
+							v-model="form.extra"
+							:sensitive="!showExtra"
+							:placeholder="$t('ClickToFill')"
+							:disabled="!showExtra"
+							name="Extra"
+						/>
+					</div>
 				</div>
 
 				<!-- Save & Cancel -->
@@ -183,7 +178,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
 	data() {

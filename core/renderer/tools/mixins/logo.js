@@ -7,7 +7,11 @@ export default {
 
 	methods: {
 		getLogo(url) {
-			return `http://logo.clearbit.com/${this.domainFromURL(url)}`;
+			if (url.includes("secman.dev")) {
+				return "https://assets.secman.dev/sm-ogp.svg";
+			} else {
+				return `http://logo.clearbit.com/${this.domainFromURL(url)}`;
+			}
 		},
 
 		domainFromURL(url) {
@@ -16,6 +20,7 @@ export default {
 				const matches = url.match(/^(?:https?:)?(?:\/\/)?([^\/\?]+)/i);
 				return matches && matches[1];
 			}
+
 			return "S";
 		},
 

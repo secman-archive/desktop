@@ -9,12 +9,12 @@
 </p>
 
 <p align="center">
-  <a href="https://secman.dev/download#choose"><strong>secman.dev/download</strong></a>
+  <a href="https://secman.dev/download"><strong>secman.dev/download</strong></a>
 </p>
 
 ## Build & Run
 
-> First sign up via [**Secman Signup Website**](https://signup.secman.dev)
+> First sign up via [**Secman Authorize Website**](https://auth.secman.dev)
 
 ### Requirements
 

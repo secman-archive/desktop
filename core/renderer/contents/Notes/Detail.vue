@@ -31,24 +31,16 @@
 						<div class="d-flex flex-items-center">
 							<!-- Copy -->
 							<ClipboardButton :copy="form.note" />
-							<!-- Show/Hide -->
-							<button
-								type="button"
-								@click="showNote = !showNote"
-								class="detail-page-header-icon ml-2"
-								v-tooltip="$t(showNote ? 'Hide' : 'Show')"
-							>
-								<VIcon :name="showNote ? 'eye-off' : 'eye'" size="12px" />
-							</button>
+							<ShowPassBtn @click="showNote = $event" />
 						</div>
 					</div>
 					<div class="d-flex">
 						<VTextArea
 							v-model="form.note"
-							:sensitive="!isEditMode && !showNote"
+							:sensitive="!showNote"
 							:placeholder="$t(isEditMode ? 'ClickToFill' : 'ContentHidden')"
-							:disabled="!isEditMode"
-							rows="17"
+							:disabled="!isEditMode || !showNote"
+							rows="16"
 						/>
 					</div>
 				</div>

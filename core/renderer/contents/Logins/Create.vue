@@ -119,6 +119,7 @@ export default {
 	data() {
 		return {
 			showPass: false,
+			showExtra: false,
 			form: {
 				title: "",
 				url: "",
