@@ -75,68 +75,6 @@ export default {
 		onClickLogo() {
 			electron.shell.openExternal("https://secman.dev");
 		}
-
-		// async onExport() {
-		//   const filePath = remote.dialog.showSaveDialogSync(null);
-
-		//   if (!filePath) {
-		//     return;
-		//   }
-
-		//   try {
-		//     const data = await this.Export();
-
-		//     const itemList = JSON.parse(CryptoTools.aesDecrypt(data));
-		//     itemList.forEach((item) => CryptoTools.decryptFields(item));
-
-		//     const csvContent = Papa.unparse(itemList);
-		//     fs.writeFileSync(filePath, csvContent);
-		//   } catch (error) {
-		//     this.$notifyError(this.$t("Something went wrong."));
-		//     console.log(error);
-		//   }
-		// },
-
-		// onImport() {
-		//   remote.dialog
-		//     .showOpenDialog({ properties: ["openFile"] })
-		//     .then(async ({ filePaths }) => {
-		//       if (filePaths.length === 0) {
-		//         return;
-		//       }
-		//       try {
-		//         const fileContent = fs.readFileSync(filePaths[0]).toString();
-
-		//         let parsedCSV = Papa.parse(fileContent.trim(), {
-		//           header: true, // creates array of { head: value }
-		//         });
-
-		//         if (parsedCSV.errors.length > 0) {
-		//           this.$notifyError(
-		//             this.$t(
-		//               "There is an error. Error: ",
-		//               parsedCSV.errors[0].message
-		//             )
-		//           );
-		//           return;
-		//         }
-
-		//         const itemList = parsedCSV.data.map((item) => {
-		//           return CryptoTools.encryptPayload(item, [
-		//             "username",
-		//             "password",
-		//             "extra",
-		//           ]);
-		//         });
-
-		//         await this.Import(itemList);
-		//         this.FetchAll();
-		//       } catch (error) {
-		//         this.$notifyError(this.$t("Something went wrong."));
-		//         console.log(error);
-		//       }
-		//     });
-		// },
 	}
 };
 </script>

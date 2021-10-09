@@ -26,9 +26,9 @@
 						<VIcon name="logout" size="14px" rotation="180" class="ml-2" />
 					</button>
 
-					<button class="mr-3" @click="onClickFeedback">
-						{{ $t("GiveFeedback") }}
-						<VIcon name="external-link" size="14px" class="ml-2" />
+					<button class="mr-3" @click="onImport">
+						{{ $t("Import") }}
+						<VIcon name="import" size="14px" class="ml-2" />
 					</button>
 
 					<div class="version">
@@ -85,7 +85,11 @@
 		<!-- Supporter -->
 		<button class="btn-supporter" @click="onClickSupporter">
 			<div class="icon">
-				<VIcon v-tooltip="'Open The Secman Supporter'" name="support" size="14px" />
+				<VIcon
+					v-tooltip="'Open The Secman Supporter'"
+					name="support"
+					size="14px"
+				/>
 			</div>
 		</button>
 	</div>
@@ -93,10 +97,13 @@
 
 <script>
 import MenuItem from "./MenuItem";
-import electron from "electron";
+import electron, { remote } from "electron";
 import { mapActions, mapState } from "vuex";
 import Axios from "axios";
 import supporter from "./supporter";
+import Papa from "papaparse";
+import fs from "fs";
+import CryptoTools from "@/tools/crypto";
 
 export default {
 	components: {
@@ -124,7 +131,8 @@ export default {
 	},
 
 	methods: {
-		...mapActions(["Logout"]),
+		...mapActions(["Logout", "Import"]),
+		...mapActions("Logins", ["FetchAll"]),
 
 		onClickUpdateApp() {
 			electron.shell.openExternal("https://d.secman.dev");
@@ -143,10 +151,6 @@ export default {
 			} catch (err) {
 				console.log(err);
 			}
-		},
-
-		onClickFeedback() {
-			// electron.shell.openExternal("https://secman.typeform.com"); when secman typeform is ready
 		},
 
 		onClickSupporter() {
@@ -171,34 +175,17 @@ export default {
 			return "v" + version;
 		},
 
-		async onExport() {
-			const filePath = remote.dialog.showSaveDialogSync(null);
-
-			if (!filePath) {
-				return;
-			}
-
-			try {
-				const data = await this.Export();
-
-				const itemList = JSON.parse(CryptoUtils.aesDecrypt(data));
-				itemList.forEach(item => CryptoUtils.decryptFields(item));
-
-				const csvContent = Papa.unparse(itemList);
-				fs.writeFileSync(filePath, csvContent);
-			} catch (error) {
-				this.$notifyError(this.$t("Something went wrong."));
-				console.log(error);
-			}
-		},
-
 		onImport() {
 			remote.dialog
-				.showOpenDialog({ properties: ["openFile"] })
+				.showOpenDialog({
+					filters: [{ name: "CSV File", extensions: ["csv"] }],
+					properties: ["openFile"]
+				})
 				.then(async ({ filePaths }) => {
 					if (filePaths.length === 0) {
 						return;
 					}
+
 					try {
 						const fileContent = fs.readFileSync(filePaths[0]).toString();
 
@@ -213,11 +200,12 @@ export default {
 									parsedCSV.errors[0].message
 								)
 							);
+
 							return;
 						}
 
 						const itemList = parsedCSV.data.map(item => {
-							return CryptoUtils.encryptPayload(item, [
+							return CryptoTools.encryptPayload(item, [
 								"username",
 								"password",
 								"extra"
