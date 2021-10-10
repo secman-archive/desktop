@@ -9,7 +9,7 @@ env:
   SMP: |
     echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
     gh auth login --with-token < token.txt
-    gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar
+    gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
 
 jobs:
   win:

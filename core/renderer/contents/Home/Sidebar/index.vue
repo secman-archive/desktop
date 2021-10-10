@@ -100,7 +100,7 @@ import MenuItem from "./MenuItem";
 import electron, { remote } from "electron";
 import { mapActions, mapState } from "vuex";
 import Axios from "axios";
-import supporter from "./supporter";
+import supporter from "./sms";
 import Papa from "papaparse";
 import fs from "fs";
 import CryptoTools from "@/tools/crypto";
