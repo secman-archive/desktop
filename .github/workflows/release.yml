@@ -5,12 +5,6 @@ on:
     tags:
       - "v*.*.*"
 
-env:
-  SMP: |
-    echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
-    gh auth login --with-token < token.txt
-    gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
-
 jobs:
   win:
     runs-on: windows-latest
@@ -27,7 +21,11 @@ jobs:
       - name: Build
         run: |
           node ./scripts/release_output.js
-          $SMP
+
+          echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
+          gh auth login --with-token < token.txt
+          gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
+
           yarn build:win
 
       - name: Create Installer
@@ -57,7 +55,10 @@ jobs:
 
       - name: Build
         run: |
-          $SMP
+          echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
+          gh auth login --with-token < token.txt
+          gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
+
           yarn build:darwin
 
       - name: Create Installer
@@ -88,7 +89,11 @@ jobs:
       - name: Build
         run: |
           node ./scripts/release_output.js
-          $SMP
+
+          echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
+          gh auth login --with-token < token.txt
+          gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
+
           yarn build:linux
 
       - name: Create Installer
@@ -121,7 +126,11 @@ jobs:
       - name: Build
         run: |
           node ./scripts/release_output.js
-          $SMP
+
+          echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
+          gh auth login --with-token < token.txt
+          gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
+
           yarn build:linux
 
       - name: Create Installer
@@ -155,7 +164,11 @@ jobs:
       - name: Build
         run: |
           node ./scripts/release_output.js
-          $SMP
+
+          echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
+          gh auth login --with-token < token.txt
+          gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
+
           yarn build
 
       - name: Rename AppImage File
