@@ -23,7 +23,7 @@ jobs:
           node ./scripts/release_output.js
 
           echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
-          gh auth login --with-token < token.txt
+          cat token.txt | gh auth login --with-token
           gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
 
           yarn build:win
@@ -165,8 +165,8 @@ jobs:
         run: |
           node ./scripts/release_output.js
 
-          echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
-          gh auth login --with-token < token.txt
+          # echo $GH_TOKEN >> token.txt
+          # gh auth login --with-token < token.txt
           gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
 
           yarn build
