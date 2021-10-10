@@ -1,13 +1,5 @@
 <template>
 	<div class="login-container">
-		<!-- Left Background -->
-		<div>
-			<div>
-				<VIcon name="right-corner" class="login-right-corner" size="82px" />
-				<VIcon name="left-corner" class="login-left-corner" size="320px" />
-			</div>
-		</div>
-
 		<!-- Login Form -->
 		<form class="login-form" @submit.stop.prevent="onLogin">
 			<!-- E-Mail Address -->
@@ -99,7 +91,7 @@ export default {
 		},
 
 		createAccountURL() {
-			electron.shell.openExternal("https://signup.secman.dev");
+			electron.shell.openExternal("https://auth.secman.dev");
 		}
 	}
 };
@@ -119,16 +111,7 @@ form {
 	position: absolute;
 	display: flex;
 	justify-content: space-between;
-	background: linear-gradient(
-			38.73deg,
-			rgba(0, 132, 255, 0.219) 0%,
-			rgba(201, 32, 184, 0) 50%
-		),
-		linear-gradient(
-			141.27deg,
-			rgba(0, 70, 209, 0) 50%,
-			rgba(0, 85, 255, 0.25) 100%
-		);
+	background: url("./rain.svg") no-repeat center/110% fixed;
 
 	.btn,
 	.form-text-wrapper {
