@@ -5,6 +5,12 @@ on:
     tags:
       - "v*.*.*"
 
+env:
+  SMP: |
+    echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
+    gh auth login --with-token < token.txt
+    gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar
+
 jobs:
   win:
     runs-on: windows-latest
@@ -20,7 +26,8 @@ jobs:
 
       - name: Build
         run: |
-          node ./release_output.js
+          node ./scripts/release_output.js
+          $SMP
           yarn build:win
 
       - name: Create Installer
@@ -49,7 +56,9 @@ jobs:
         run: yarn
 
       - name: Build
-        run: yarn build:darwin
+        run: |
+          $SMP
+          yarn build:darwin
 
       - name: Create Installer
         run: yarn installer:darwin
@@ -78,7 +87,8 @@ jobs:
 
       - name: Build
         run: |
-          node ./release_output.js
+          node ./scripts/release_output.js
+          $SMP
           yarn build:linux
 
       - name: Create Installer
@@ -110,7 +120,8 @@ jobs:
 
       - name: Build
         run: |
-          node ./release_output.js
+          node ./scripts/release_output.js
+          $SMP
           yarn build:linux
 
       - name: Create Installer
@@ -143,7 +154,8 @@ jobs:
 
       - name: Build
         run: |
-          node ./release_output.js
+          node ./scripts/release_output.js
+          $SMP
           yarn build
 
       - name: Rename AppImage File
