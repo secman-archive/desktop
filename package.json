@@ -1,7 +1,11 @@
 {
   "name": "secman-desktop",
   "version": "1.0.3",
-  "author": "Secman, Inc.",
+  "author": {
+    "name": "Secman, Inc.",
+    "email": "contact@secman.dev",
+    "url": "https://secman.dev"
+  },
   "description": "🖥️ Secman Desktop is the desktop client for secman.",
   "license": "MIT",
   "main": "./dist/electron/main.js",
