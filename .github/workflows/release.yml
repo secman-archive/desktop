@@ -31,6 +31,7 @@ jobs:
       - name: Rename Installer
         run: |
           $tag_name=(cat version).replace(' ','')
+          mkdir installers
           mv "./build/Secman Desktop Setup $tag_name.exe" ./installers/secman-desktop-setup.exe
 
       - name: Upload It
@@ -91,6 +92,7 @@ jobs:
       - name: Rename Files
         run: |
           export tag_name=$(cat version)
+          mkdir installers
           mv "./build/secman-desktop_${tag_name}_amd64.deb" ./installers/secman-desktop-setup-amd64.deb
           mv "./build/secman-desktop-$tag_name.x86_64.rpm" ./installers/secman-desktop-setup-amd64.rpm
           mv "./build/Secman Desktop-$tag_name.AppImage" ./build/secman-desktop.AppImage
