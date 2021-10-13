@@ -41,7 +41,7 @@
 			<VButton
 				size="medium"
 				@click="createAccountURL"
-				style="background-color: white; color: black;"
+				style="background-color: white; color: black"
 			>
 				{{ $t("CreateAccount") }}
 			</VButton>
@@ -59,8 +59,8 @@ export default {
 		return {
 			LoginForm: {
 				email: localStorage.email || "",
-				master_password: ""
-			}
+				master_password: "",
+			},
 		};
 	},
 
@@ -68,12 +68,12 @@ export default {
 		...mapActions(["Login"]),
 
 		onLogin() {
-			this.$validator.validate().then(async result => {
+			this.$validator.validate().then(async (result) => {
 				if (!result) return;
 
 				HTTPClient.setBaseURL(localStorage.server);
 
-				const onError = error => {
+				const onError = (error) => {
 					let text = this.$t("Ooops! Something went wrong! try again");
 					if (error.response.status == 401) {
 						text = this.$t(error.response.data.message);
@@ -92,8 +92,8 @@ export default {
 
 		createAccountURL() {
 			electron.shell.openExternal("https://auth.secman.dev");
-		}
-	}
+		},
+	},
 };
 </script>
 
@@ -111,7 +111,7 @@ form {
 	position: absolute;
 	display: flex;
 	justify-content: space-between;
-	background: url("./rain.svg") no-repeat center/110% fixed;
+	background: url("./bg.gif");
 
 	.btn,
 	.form-text-wrapper {
