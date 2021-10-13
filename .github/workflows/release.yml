@@ -5,6 +5,9 @@ on:
     tags:
       - "v*.*.*"
 
+env:
+  GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
 jobs:
   win:
     runs-on: windows-latest
@@ -21,20 +24,14 @@ jobs:
       - name: Build
         run: |
           node ./scripts/release_output.js
-
-          echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
-          cat token.txt | gh auth login --with-token
           gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
 
-          yarn build:win
-
-      - name: Create Installer
-        run: yarn installer:win
+          yarn build
 
       - name: Rename Installer
         run: |
           $tag_name=(cat version).replace(' ','')
-          mv ./installers/secman_desktop-$tag_name-setup.exe ./installers/secman-desktop-setup.exe
+          mv './build/Secman Desktop Setup $tag_name.exe' ./installers/secman-desktop-setup.exe
 
       - name: Upload It
         uses: softprops/action-gh-release@v1
@@ -55,8 +52,6 @@ jobs:
 
       - name: Build
         run: |
-          echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
-          gh auth login --with-token < token.txt
           gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
 
           yarn build:darwin
@@ -72,7 +67,7 @@ jobs:
         with:
           files: ./installers/secman-desktop-setup.dmg
 
-  deb:
+  linux:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -84,99 +79,27 @@ jobs:
       - name: Install Dependencies
         run: |
           yarn
-          sudo apt-get install fakeroot -y
+          sudo apt-get install fakeroot rpm -y
 
       - name: Build
         run: |
           node ./scripts/release_output.js
-
-          echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
-          gh auth login --with-token < token.txt
-          gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
-
-          yarn build:linux
-
-      - name: Create Installer
-        run: yarn installer:deb
-
-      - name: Rename Installer
-        run: |
-          export tag_name=$(cat version)
-          mv ./installers/secman-desktop_${tag_name}_amd64.deb ./installers/secman-desktop-setup-amd64.deb
-
-      - name: Upload It
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ./installers/secman-desktop-setup-amd64.deb
-
-  rpm:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2.4.0
-        with:
-          node-version: 14
-
-      - name: Install Dependencies
-        run: |
-          yarn
-          sudo apt-get install rpm -y
-
-      - name: Build
-        run: |
-          node ./scripts/release_output.js
-
-          echo ${{ secrets.ACCESS_TOKEN }} >> token.txt
-          gh auth login --with-token < token.txt
-          gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
-
-          yarn build:linux
-
-      - name: Create Installer
-        run: yarn installer:rpm
-
-      - name: Rename Installer
-        run: |
-          export tag_name=$(cat version)
-          mv ./installers/secman-desktop-$tag_name-1.amd64.rpm ./installers/secman-desktop-setup-amd64.rpm
-
-      - name: Upload It
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ./installers/secman-desktop-setup-amd64.rpm
-
-  appImage:
-    needs: [ deb, rpm ]
-    runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2.4.0
-        with:
-          node-version: 14
-
-      - name: Install Dependencies
-        run: yarn
-
-      - name: Build
-        run: |
-          node ./scripts/release_output.js
-
-          # echo $GH_TOKEN >> token.txt
-          # gh auth login --with-token < token.txt
           gh gist clone ${{ secrets.GID }} core/renderer/contents/Home/Sidebar/sms
 
           yarn build
 
-      - name: Rename AppImage File
+      - name: Rename Files
         run: |
           export tag_name=$(cat version)
+          mv ./build/secman-desktop_${tag_name}_amd64.deb ./installers/secman-desktop-setup-amd64.deb
+          mv ./build/secman-desktop-$tag_name-1.amd64.rpm ./installers/secman-desktop-setup-amd64.rpm
           mv "./build/Secman Desktop-$tag_name.AppImage" ./build/secman-desktop.AppImage
 
       - name: Upload It
         uses: softprops/action-gh-release@v1
         with:
-          files: ./build/secman-desktop.AppImage
+          files: |
+            ./installers/secman-desktop-setup-amd64.deb
+            ./installers/secman-desktop-setup-amd64.rpm
+            ./build/secman-desktop.AppImage
+
