@@ -67,6 +67,13 @@ export default {
 			}
 		},
 
+		onAlwaysOnTop() {
+			this.isAlwaysOnTop = !this.isAlwaysOnTop;
+			remote
+				.getCurrentWindow()
+				.setAlwaysOnTop(!remote.getCurrentWindow().isAlwaysOnTop());
+		},
+
 		onClickLogout() {
 			this.Logout();
 			this.$router.replace({ name: "Login" });

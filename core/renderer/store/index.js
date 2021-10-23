@@ -82,11 +82,6 @@ export default new Vuex.Store({
 		async Import(_, data) {
 			return SystemService.Import(data);
 		},
-
-		async Export() {
-			const { data } = SystemService.Export();
-			return data;
-		}
 	},
 
 	mutations: {

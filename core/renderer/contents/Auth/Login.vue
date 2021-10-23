@@ -78,6 +78,7 @@ export default {
 					if (error.response.status == 401) {
 						text = this.$t(error.response.data.message);
 					}
+
 					this.$notifyError(text);
 				};
 

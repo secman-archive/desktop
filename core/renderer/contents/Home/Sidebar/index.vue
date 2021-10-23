@@ -26,6 +26,18 @@
 						<VIcon name="logout" size="14px" rotation="180" class="ml-2" />
 					</button>
 
+					<!-- Always On Top -->
+					<button
+						class="mr-3"
+						:class="[isAlwaysOnTop ? 'active' : '']"
+						@click="onAlwaysOnTop"
+					>
+						{{ $t("AlwaysOnTop") }}
+
+						<VIcon name="always-on-top" size="14px" class="ml-2" />
+					</button>
+
+					<!-- Import -->
 					<button class="mr-3" @click="onImport">
 						{{ $t("Import") }}
 						<VIcon name="import" size="14px" class="ml-2" />
@@ -114,7 +126,8 @@ export default {
 		return {
 			hasUpdate: false,
 			updateLink: null,
-			showAccountMenu: false
+			showAccountMenu: false,
+			isAlwaysOnTop: false
 		};
 	},
 
@@ -163,6 +176,13 @@ export default {
 
 		onClickCancel() {
 			electron.shell.openExternal(this.user.cancel_url);
+		},
+
+		onAlwaysOnTop() {
+			this.isAlwaysOnTop = !this.isAlwaysOnTop;
+			remote
+				.getCurrentWindow()
+				.setAlwaysOnTop(!remote.getCurrentWindow().isAlwaysOnTop());
 		},
 
 		onClickLogout() {
@@ -264,7 +284,7 @@ export default {
 
 			&.--open {
 				border: 1px solid $color-gray-400;
-				height: 145px;
+				height: 180px;
 			}
 
 			hr {
@@ -356,6 +376,14 @@ export default {
 			bottom: 0px;
 			color: $color-secondary;
 		}
+	}
+
+	.top-btn {
+		color: $color-gray-300;
+	}
+	.top-btn:hover,
+	.top-btn.active {
+		color: $color-secondary;
 	}
 
 	&-menu-item {

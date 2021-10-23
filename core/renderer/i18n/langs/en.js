@@ -38,5 +38,6 @@ export default {
 	API500ErrorMessage:
 		"An unexpected error seems to have occured. Or you can contact us if the problem persists.",
 	CreateAccount: "Or Create an Account",
-	CheckIfExposed: "Check if password has been exposed."
+	CheckIfExposed: "Check if password has been exposed.",
+	AlwaysOnTop: "Always On Top"
 };
