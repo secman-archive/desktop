@@ -7,7 +7,6 @@ import CryptoTools from "@/tools/crypto";
 
 import AuthService from "@/apis/services/auth";
 import SystemService from "@/apis/services/system";
-import HTTPClient from "@/apis/http";
 
 import Logins from "@/contents/Logins/store";
 import CreditCards from "@/contents/CreditCards/store";
@@ -54,7 +53,6 @@ export default new Vuex.Store({
 			state.authenticated = true;
 
 			localStorage.email = payload.email;
-			localStorage.server = payload.server;
 			localStorage.access_token = data.access_token;
 			localStorage.refresh_token = data.refresh_token;
 
