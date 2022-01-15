@@ -1,0 +1,8 @@
+tasks:
+  - init: yarn
+    command: yarn serve
+
+ports:
+  - port: 3625
+    onOpen: notify
+    visibility: public
