@@ -12,6 +12,8 @@
   <a href="https://secman.dev/download"><strong>secman.dev/download</strong></a>
 </p>
 
+> Secman Desktop is built with [Vue.js](https://vuejs.org/) and and [PWA](https://developers.google.com/web/progressive-web-apps/).
+
 ## Build & Run
 
 > First sign up via [**Secman Authorize Website**](https://auth.secman.dev)
@@ -19,7 +21,6 @@
 ### Requirements
 
 - [**Node.js**](https://nodejs.org)
-- [**Electron**](https://www.electronjs.org)
 - [**Vue**](https://vuejs.org)
 
 ### Run
@@ -29,8 +30,8 @@
 yarn
 
 # run secman desktop in dev mode
-yarn dev
+yarn serve
 
-# build electron application for production
+# build application for production
 yarn build
 ```

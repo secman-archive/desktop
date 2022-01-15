@@ -1,20 +1,24 @@
 .DS_Store
-dist/electron/*
-dist/web/*
-build/*
-coverage
-node_modules/
-npm-debug.log
-npm-debug.log.*
-thumbs.db
-!.gitkeep
-installers
-.idea/
+node_modules
+/dist
 
-.env
+# local env files
+.env.local
+.env.*.local
 
-/version
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-/core/renderer/contents/Home/Sidebar/sms
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-/icons
+.vercel
