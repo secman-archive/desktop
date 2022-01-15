@@ -22,3 +22,5 @@ pnpm-debug.log*
 *.sw?
 
 .vercel
+
+/src/contents/Home/Sidebar/sms
