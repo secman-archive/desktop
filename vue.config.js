@@ -12,14 +12,7 @@ module.exports = {
     name: "Secman Desktop",
     themeColor: "#1163E6",
     msTileColor: "#000000",
-    appleMobileWebAppCache: "yes",
-    appleMobileWebAppCapable: "yes",
-    appleMobileWebAppStatusBarStyle: "black",
 
-    workboxPluginMode: "InjectManifest",
-    workboxOptions: {
-      swSrc: "src/registerServiceWorker.ts",
-    },
     manifestOptions: {
       background_color: "#000000",
       icons: [
