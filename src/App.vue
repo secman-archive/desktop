@@ -5,7 +5,7 @@
 				<VIcon name="sm-logo" />
 			</button>
 
-			<div class="app-header-control-buttons">
+			<div v-if="shown" class="app-header-control-buttons">
 				<button
 					@click="installPWA"
 					v-tooltip="`Install Secman Desktop`"
