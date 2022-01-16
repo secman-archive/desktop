@@ -39,7 +39,7 @@ export default {
       if (this.value != "") {
         return "•".repeat(this.value.length);
       } else {
-        return "no entry";
+        return "no extra";
       }
     },
   },
