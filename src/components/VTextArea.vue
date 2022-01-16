@@ -1,7 +1,7 @@
 <template>
   <div class="text-area-wrapper">
     <textarea
-      :value="sensitive ? _hidden : value"
+      :value="sensitive ? value : _hidden"
       autocorrect="off"
       autocomplete="off"
       spellcheck="false"
@@ -36,7 +36,11 @@ export default {
     },
 
     _hidden() {
-      return "•".repeat(this.value.length);
+      if (this.value != "") {
+        return "•".repeat(this.value.length);
+      } else {
+        return "no entry";
+      }
     },
   },
 };

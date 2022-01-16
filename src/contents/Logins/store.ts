@@ -4,40 +4,40 @@ import CryptoTools from "@/tools/crypto";
 const EncryptedFields = ["username", "password", "extra"];
 
 export default {
-  namespaced: true,
+	namespaced: true,
 
-  state() {
-    return {
-      ItemList: [],
-      Detail: {},
-    };
-  },
+	state() {
+		return {
+			ItemList: [],
+			Detail: {},
+		};
+	},
 
-  actions: {
-    async FetchAll({ state }: any, query: any) {
-      const { data } = await LoginsService.FetchAll(query);
+	actions: {
+		async FetchAll({ state }: any, query: any) {
+			const { data } = await LoginsService.FetchAll(query);
 
-      const itemList = JSON.parse(CryptoTools.aesDecrypt(data.data));
+			const itemList = JSON.parse(CryptoTools.aesDecrypt(data.data));
 
-      itemList.forEach((element: any) => {
-        CryptoTools.decryptFields(element, EncryptedFields);
-      });
+			itemList.forEach((element: any) => {
+				CryptoTools.decryptFields(element, EncryptedFields);
+			});
 
-      state.ItemList = itemList;
-    },
+			state.ItemList = itemList;
+		},
 
-    Delete(_: any, id: any) {
-      return LoginsService.Delete(id);
-    },
+		Delete(_: any, id: any) {
+			return LoginsService.Delete(id);
+		},
 
-    Create(_: any, data: any) {
-      const payload = CryptoTools.encryptPayload(data, EncryptedFields);
-      return LoginsService.Create(payload);
-    },
+		Create(_: any, data: any) {
+			const payload = CryptoTools.encryptPayload(data, EncryptedFields);
+			return LoginsService.Create(payload);
+		},
 
-    Update(_: any, data: any) {
-      const payload = CryptoTools.encryptPayload(data, EncryptedFields);
-      return LoginsService.Update(data.id, payload);
-    },
-  },
+		Update(_: any, data: any) {
+			const payload = CryptoTools.encryptPayload(data, EncryptedFields);
+			return LoginsService.Update(data.id, payload);
+		},
+	},
 };
