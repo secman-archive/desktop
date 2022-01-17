@@ -1,19 +1,12 @@
 <template>
 	<div id="app">
 		<header class="app-header">
-			<button v-tooltip="`Secman Desktop 🖥️`" class="trsn logo app-header-left-section">
+			<button
+				v-tooltip="`Secman Desktop 🖥️`"
+				class="trsn logo app-header-left-section"
+			>
 				<VIcon name="sm-logo" />
 			</button>
-
-			<div v-if="shown" class="app-header-control-buttons">
-				<button
-					@click="installPWA"
-					v-tooltip="`Install Secman Desktop`"
-					class="trsn pwa-btn ml-2"
-				>
-					<VIcon name="install" size="15px" />
-				</button>
-			</div>
 		</header>
 		<!-- Content -->
 		<RouterView />
@@ -24,35 +17,7 @@
 </template>
 
 <script>
-export default {
-	data: () => ({
-		installEvent: undefined,
-		shown: false,
-	}),
-	beforeMount() {
-		window.addEventListener("beforeinstallprompt", (e) => {
-			e.preventDefault();
-			this.installEvent = e;
-			this.shown = true;
-		});
-	},
-	methods: {
-		installPWA() {
-			this.installEvent.prompt();
-			this.installEvent.userChoice.then((choice) => {
-				this.dismissPrompt(); // Hide the banner once the user's clicked
-				if (choice.outcome === "accepted") {
-					// Do something additional if the user chose to install
-				} else {
-					// Do something additional if the user declined
-				}
-			});
-		},
-		dismissPrompt() {
-			this.shown = false;
-		},
-	},
-};
+export default {};
 </script>
 
 <style lang="scss">
@@ -62,21 +27,6 @@ export default {
 	color: $color-gray-200;
 	line-height: 16px;
 	padding-top: 4px;
-}
-
-.pwa-btn {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 24px;
-	height: 24px;
-	border-radius: 4px;
-	background-color: black;
-	color: $color-gray-300;
-}
-
-.pwa-btn:hover {
-	color: $color-secondary;
 }
 
 .app-header {
