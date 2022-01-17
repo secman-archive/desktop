@@ -65,7 +65,7 @@
     <button class="btn-empty-fix"></button>
 
     <!-- Supporter -->
-    <button class="btn-supporter" @click="onClickSupporter">
+    <!-- <button class="btn-supporter" @click="onClickSupporter">
       <div class="icon">
         <VIcon
           v-tooltip="'Open The Secman Supporter'"
@@ -73,14 +73,13 @@
           size="14px"
         />
       </div>
-    </button>
+    </button> -->
   </div>
 </template>
 
 <script>
 import MenuItem from "./MenuItem";
 import { mapActions, mapState } from "vuex";
-import supporter from "./sms";
 
 export default {
   components: {
@@ -106,7 +105,7 @@ export default {
     ...mapActions("Logins", ["FetchAll"]),
 
     onClickSupporter() {
-      supporter();
+      // supporter();
     },
 
     onClickLogout() {
