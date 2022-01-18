@@ -4,7 +4,10 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <meta property="og:image" content="https://assets.secman.dev/apps/icons/dsk.svg" />
+		<meta
+			property="og:image"
+			content="https://assets.secman.dev/apps/icons/dsk.svg"
+		/>
 
 		<link
 			rel="icon"
@@ -12,7 +15,10 @@
 			href="https://assets.secman.dev/apps/icons/dsk.svg"
 		/>
 
-		<link rel="apple-touch-icon" href="https://assets.secman.dev/apps/icons/dsk.svg" />
+		<link
+			rel="apple-touch-icon"
+			href="https://assets.secman.dev/apps/icons/dsk.svg"
+		/>
 
 		<title>Secman Desktop</title>
 	</head>
@@ -24,7 +30,27 @@
 				continue.</strong
 			>
 		</noscript>
+
+		<script>
+			(function (d, t) {
+				var CHATWOOT_URL = "https://app.chatwoot.com";
+				var g = d.createElement(t),
+					s = d.getElementsByTagName(t)[0];
+
+				g.src = CHATWOOT_URL + "/packs/js/sdk.js";
+				g.defer = true;
+				g.async = true;
+				s.parentNode.insertBefore(g, s);
+
+				g.onload = function () {
+					window.chatwootSDK.run({
+						websiteToken: "tzvY3mqAKzsGScGG9oSxS1bi",
+						baseUrl: CHATWOOT_URL,
+					});
+				};
+			})(document, "script");
+		</script>
+
 		<div id="app"></div>
-		<!-- built files will be auto injected -->
 	</body>
 </html>
