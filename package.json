@@ -13,7 +13,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "crypto-js": "^4.1.1",
     "dotenv": "^11.0.0",
