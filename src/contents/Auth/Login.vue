@@ -47,9 +47,9 @@
 			</VButton>
 
 			<VButton size="medium" style="background-color: white; color: black">
-				<a href="https://auth.secman.dev" target="blank">
-					{{ $t("CreateAccount") }}</a
-				>
+				<a @click="openPortal">
+					{{ $t("CreateAccount") }}
+				</a>
 			</VButton>
 		</form>
 	</div>
@@ -63,6 +63,7 @@ export default {
 		return {
 			installEvent: undefined,
 			shown: false,
+			windowRef: null,
 			LoginForm: {
 				email: "",
 				master_password: "",
@@ -70,10 +71,26 @@ export default {
 		};
 	},
 
+	watch: {
+		open(newOpen) {
+			if (newOpen) {
+				this.openPortal();
+			} else {
+				this.closePortal();
+			}
+		},
+	},
+
 	mounted() {
-		this.$storage.getItem("email").then((e) => {
-			if (e) this.LoginForm.email = e;
-		});
+		if (this.open) {
+			this.openPortal();
+		}
+	},
+
+	beforeDestroy() {
+		if (this.windowRef) {
+			this.closePortal();
+		}
 	},
 
 	beforeMount() {
@@ -97,6 +114,23 @@ export default {
 
 	methods: {
 		...mapActions(["Login"]),
+
+		openPortal() {
+			this.windowRef = window.open(
+				"https://auth.secman.dev",
+				"",
+				"width=500,height=600,left=200,top=200"
+			);
+			this.windowRef.addEventListener("beforeunload", this.closePortal);
+		},
+
+		closePortal() {
+			if (this.windowRef) {
+				this.windowRef.close();
+				this.windowRef = null;
+				this.$emit("close");
+			}
+		},
 
 		onLogin() {
 			this.$validator.validate().then(async (result) => {
