@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "axios": "^0.25.0",
-    "core-js": "^3.6.5",
+    "core-js": "^3.21.0",
     "crypto-js": "^4.1.1",
     "dotenv": "^11.0.0",
     "localforage": "^1.10.0",
