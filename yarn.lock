@@ -6412,7 +6412,7 @@ pbkdf2@^3.0.3:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-perfect-scrollbar@^1.5.2:
+perfect-scrollbar@^1.5.5:
   version "1.5.5"
   resolved "https://registry.yarnpkg.com/perfect-scrollbar/-/perfect-scrollbar-1.5.5.tgz#41a211a2fb52a7191eff301432134ea47052b27f"
   integrity sha512-dzalfutyP3e/FOpdlhVryN4AJ5XDVauVWxybSkLZmakFE2sS3y3pc4JnSprw8tGmHvkaG5Edr5T7LBTZ+WWU2g==
@@ -8706,13 +8706,13 @@ vue-wait@^1.4.8:
   resolved "https://registry.yarnpkg.com/vue-wait/-/vue-wait-1.5.3.tgz#3d4c994a4a522485cbfae36c57a356139f6333d9"
   integrity sha512-R33p0wljvjOC1OoqZffPS7pjstn5dAOdML5TdhHky3PqlO98qntMcJceGaeHxKTOXcjh50XNFOBQfGVzqGixCA==
 
-vue2-perfect-scrollbar@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/vue2-perfect-scrollbar/-/vue2-perfect-scrollbar-1.5.2.tgz#acd472f4516a3a2065ba550eb372cfa320e49e38"
-  integrity sha512-3TSBuRUgeLmiwM7bcqQ7OIoOIcltjNocGWwoHfwgHUhkVjVUVNRun2XFdwvN9hZFfjDDW9cHYsEoIQwvgsSCbw==
+vue2-perfect-scrollbar@^1.5.5:
+  version "1.5.5"
+  resolved "https://registry.yarnpkg.com/vue2-perfect-scrollbar/-/vue2-perfect-scrollbar-1.5.5.tgz#1946cdd8f3b757517ea176c30dc77ba19031508e"
+  integrity sha512-po1QGUlgGFL1aS8xC7IcGEUeySKFjk+qT7aVU9htOfGeVcmwOqZuFV3vIQaizDDBNwsbSE8kOO/p4DjAej0zNQ==
   dependencies:
     cssnano "^4.1.3"
-    perfect-scrollbar "^1.5.2"
+    perfect-scrollbar "^1.5.5"
     postcss-import "^12.0.0"
 
 vue@^2.6.11:
