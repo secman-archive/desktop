@@ -1,7 +1,7 @@
 # Secman Desktop
 
 <p align="center">
-  <img src="./.github/screenshots/windows.png" />
+  <img src="https://assets.secman.dev/apps/desktop.svg" />
 </p>
 
 <p align="center">
