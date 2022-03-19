@@ -30,15 +30,15 @@
 						<label v-text="$t('NOTE')" />
 						<div class="d-flex flex-items-center">
 							<ClipboardButton :copy="form.note" />
-							<ShowPassBtn :isNote="true" @click="showNote = $event" />
+							<ShowPassBtn @click="showNote = $event" />
 						</div>
 					</div>
-					<div style="overflow: hidden;" class="d-flex">
+					<div style="overflow: hidden" class="d-flex">
 						<VTextArea
 							v-model="form.note"
 							:sensitive="!showNote"
-							:placeholder="$t(isEditMode ? 'ContentHidden' : 'ClickToFill')"
-							:disabled="!showNote"
+							:placeholder="$t('ClickToFill')"
+							:disabled="!isEditMode"
 							rows="16"
 						/>
 					</div>

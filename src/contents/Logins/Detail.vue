@@ -68,7 +68,6 @@
 						<label v-text="$t('EXTRA')" />
 						<div class="d-flex flex-items-center">
 							<ClipboardButton :copy="form.extra" />
-							<ShowPassBtn @click="showExtra = $event" />
 						</div>
 					</div>
 					<div class="d-flex">
