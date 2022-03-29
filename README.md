@@ -4,4 +4,4 @@
   <img src="https://assets.secman.dev/apps/desktop.svg" />
 </p>
 
-> moved to https://github.com/scmn-dev/secman/tree/main/desktop
+> moved to [**scmn-dev/secman/desktop**](https://github.com/scmn-dev/secman/tree/main/desktop)
